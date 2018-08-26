@@ -5,12 +5,9 @@ import propTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login} from '../../actions/auth';
 class LoginPage extends Component {
-  constructor(props) {
-    super(props);
-  }
   submit = data => 
     this.props.login(data).then(() => {
-      this.props.history.push('/');
+      this.props.history.push('/dashboard');
     })
   render() {
     return (
