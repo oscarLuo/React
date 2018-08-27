@@ -7,8 +7,7 @@ export default {
     },
     signup: users =>{
       return axios.post('/api/users', {users}).then(res => res.data.user)
-    },
-    fetchCurrentUser: () => axios.get('/api/users/current_user').then(res => res.data.user)
+    }
   },
   books: {
     fetchAll: () => axios.get("/api/books").then(res => res.data.books),

@@ -12,4 +12,6 @@ export default function books(state = {}, actions={}) {
 
 //SELECTORS
 export const bookSelector = state => state.books;
-export const allBooksSelector = createSelector(bookSelector, bookHash => Object.values(bookHash));
+export const allBooksSelector = createSelector(bookSelector, bookHash => Object.keys(bookHash).map(function(key) {
+    return bookHash[key];
+}));
