@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
     <div className="App ui container">
-        { this.props.isAuthenticated && <TopNavigation /> }
+        <TopNavigation />
         <Route 
           location={this.props.location} 
           path='/' 

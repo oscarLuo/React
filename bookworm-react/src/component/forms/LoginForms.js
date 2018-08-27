@@ -48,7 +48,7 @@ class LoginForms extends Component {
                 <p>{errors.globals}</p>
             </Message>}
             <Form.Field error={errors.email}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">邮箱：</label>
                 <input 
                     type="email"
                     id="email"
@@ -59,7 +59,7 @@ class LoginForms extends Component {
             </Form.Field>
             {errors.email && <InlineError text={errors.email}/>}
             <Form.Field error={errors.password}>
-                <label htmlFor="password">password</label>
+                <label htmlFor="password">密码：</label>
                 <input 
                     type="password"
                     id="password"
@@ -69,7 +69,7 @@ class LoginForms extends Component {
                     onChange={this.handleChange}/>
             </Form.Field>
             {errors.password && <InlineError text={errors.password}/>}
-            <Button primary>Login</Button>
+            <Button primary>登录</Button>
         </Form>
     );
   }
