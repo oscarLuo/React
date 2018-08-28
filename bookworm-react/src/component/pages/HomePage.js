@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import GridLayout from '../grid/GridLayout';
+import {Grid, Image} from 'semantic-ui-react';
 const appStyle = {
-  width: '100%'
+  width: '100%',
+  marginTop: '60px'
 }
 const imgStyle= {
   maxHeight: '738px',
@@ -11,7 +14,17 @@ class HomePage extends Component {
   render() {
     return (
       <div className="App" style={appStyle}>
-        <img style={imgStyle} src='https://desk-fd.zol-img.com.cn/t_s1600x900c5/g5/M00/0F/06/ChMkJltRVFCIIeh2AAFU4yhapy8AAp4IwGotQ0AAVT7843.jpg'/>
+      
+      <Grid stackable>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <img style={imgStyle} src='http://p286ly2wa.bkt.clouddn.com/o_1c66vmn8u1aepmo1gar1plhhr9i.jpg?imageslim'/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <GridLayout />
+        <GridLayout />
+        <GridLayout />
       </div>
     );
   }
