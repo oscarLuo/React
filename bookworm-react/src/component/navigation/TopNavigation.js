@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/auth'
+import { login, logout } from '../../actions/auth'
 import LoginForms from '../forms/LoginForms';
-import { Container, Dropdown, Modal, Image, Menu } from 'semantic-ui-react';
+import { Container, Dropdown, Modal, Image, Menu, Transition } from 'semantic-ui-react';
 
 class TopNavigation extends Component {
   submit = data => {
-    debugger;
     return this.props.login(data).then(() => {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/');
     })
   }
     
   render() {
     return ( 
       <div>
-        <Menu stackable fixed='top' inverted>
+        <Menu color="grey" stackable fixed='top' inverted>
           <Container>
             <Menu.Item header as={ Link } to='/'>
               <Image size='mini' src='../../favicon.ico' style={{ marginRight: '1.5em' }} />
@@ -42,12 +41,14 @@ class TopNavigation extends Component {
               </Dropdown.Menu>
             </Dropdown>
             <Menu.Item as='a' position='right'>
-              <Modal size='mini' trigger={<button className="ui primary button">登录</button>}>
+            {this.props.isAuthenticated ? <button className="ui primary button" onClick={()=>this.props.logout()}>退出</button> :  
+              <Transition animation='jiggle' ><Modal size='tiny' trigger={<button className="ui primary button">登录</button>}>
                 <Modal.Header>请输入您的用户名和密码：</Modal.Header>
-                <Modal.Content image>
-                  <LoginForms submit={this.submit}/>
+                <Modal.Content>
+                    <LoginForms submit={this.submit}/>
                 </Modal.Content>
               </Modal>
+              </Transition>}
             </Menu.Item>
           </Container>
         </Menu>
@@ -55,5 +56,9 @@ class TopNavigation extends Component {
     )
   }
 }
-
-export default connect(null, { login })(TopNavigation);
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated : !!state.user.token
+  }
+}
+export default connect(mapStateToProps, { login, logout })(TopNavigation);

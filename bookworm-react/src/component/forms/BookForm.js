@@ -31,7 +31,6 @@ class BookForm extends React.Component {
   }
 
   onChange = e =>{
-    debugger;
     this.setState({
       ...this.state,
       data: { ...this.state.data, [e.target.name]: e.target.value }

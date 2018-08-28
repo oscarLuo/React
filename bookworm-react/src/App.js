@@ -12,19 +12,21 @@ import NewBookPage from './component/pages/NewBookPage';
 import UserRoute from './component/routes/UserRoute';
 import GuestRoute from './component/routes/GuestRoute';
 import TopNavigation from './component/navigation/TopNavigation';
-
+const appStyle = {
+  width: '100%'
+}
 
 class App extends Component {
   render() {
     return (
-    <div className="App ui container">
-        <TopNavigation />
+    <div className="App ui container" style={appStyle}>
+        <TopNavigation history={this.props.history}/>
         <Route 
           location={this.props.location} 
           path='/' 
           exact 
           component={HomePage}/>
-        <GuestRoute 
+        {/* <GuestRoute 
           location={this.props.location} 
           path='/login' 
           exact 
@@ -33,7 +35,7 @@ class App extends Component {
           location={this.props.location} 
           path='/signup' 
           exact 
-          component={SignupPage}/>
+          component={SignupPage}/> */}
         <UserRoute 
           location={this.props.location} 
           path='/dashboard' 

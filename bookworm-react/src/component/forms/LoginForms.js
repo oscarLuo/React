@@ -42,15 +42,17 @@ class LoginForms extends Component {
   render() {
     const {data,errors,loading} = this.state;
     return (
-        <Form onSubmit={this.onSubmit} loading={loading}>
+        <Form size='large' onSubmit={this.onSubmit} loading={loading}>
             {errors.globals && <Message>
                 <Message.Header>Something went wrong:</Message.Header>
                 <p>{errors.globals}</p>
             </Message>}
             <Form.Field error={errors.email}>
-                <label htmlFor="email">邮箱：</label>
-                <input 
+                <Form.Input 
+                    label='邮箱：'
                     type="email"
+                    icon='user'
+                    iconPosition='left'
                     id="email"
                     name="email"
                     placeholder="example@exmaple"
@@ -59,17 +61,19 @@ class LoginForms extends Component {
             </Form.Field>
             {errors.email && <InlineError text={errors.email}/>}
             <Form.Field error={errors.password}>
-                <label htmlFor="password">密码：</label>
-                <input 
+                <Form.Input 
+                    label='密码：'
                     type="password"
                     id="password"
                     name="password"
                     placeholder="Enter your password"
+                    icon='lock'
+                    iconPosition='left'
                     value={data.password}
                     onChange={this.handleChange}/>
             </Form.Field>
             {errors.password && <InlineError text={errors.password}/>}
-            <Button primary>登录</Button>
+            <Button color='teal' fluid size='large'>登录</Button>
         </Form>
     );
   }
